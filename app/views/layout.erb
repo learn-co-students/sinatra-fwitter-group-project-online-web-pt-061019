@@ -1,15 +1,103 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css"/>
+    <script src="https://kit.fontawesome.com/ff55eb9f75.js"></script>
     <title>Fwitter</title>
+
+    <style>
+      body, html {
+        background: #F5F8FA;
+        font-size: 100%;
+        font-family: 'Open Sans', sans serif; 
+        height: 100%;
+      }
+      .is-two-thirds {
+        min-height: 85vh; 
+        margin: 5% auto;
+        background: #fff;
+        padding: 20px 50px;
+      }
+      a {
+        text-decoration: none;
+        color: #4BACD2;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      header {
+        border-bottom: 1px solid #657786;;
+        margin: 0 0 30px;
+      }
+      header .logo {
+        margin: 5px 0;
+      }
+      header .logo h1 {
+        display: inline;
+      }
+      header .logo h1, header .fa-dove {
+        color: #1DA1F2;
+        font-size: 1.25em;
+        text-transform: uppercase;
+      }
+      header a:hover {
+        text-decoration: none;
+      }
+      section {
+        margin: 0 auto;
+      }
+      .form-style {
+        text-align: center;
+        padding: 50px;
+        min-height: 55vh;
+      }
+      .form-style input {
+        margin: 0 0 10px;
+        width: 100%;
+      }
+      form p {
+        font-size: .90em;
+        text-align: left;
+      }      
+      .submit-btn {
+        text-decoration: none;
+        background-color: #4BACD2;
+        border-color: transparent;
+        font-weight: bold;
+        font-size: .75em;
+        color: white;
+        /* border-radius: 20px; */
+        padding: 5px 20px;
+        margin: 20px 0 0 0;
+      }
+      .sign-up {
+        background-color: #1da1f2;
+        background-image: url(http://www.transparenttextures.com/patterns/green-gobbler.png);
+      }
+      .account-sidebar {
+        background-color: #AAB8C2;
+        padding: 50px;
+        min-height: 55vh;
+        /* background-image: url(http://www.transparenttextures.com/patterns/green-gobbler.png); */
+      }
+      .img-text {
+        color: white;
+        padding: 30px;
+      }
+    </style>
   </head>
+
   <body>
-
-    <div class="container">
-      <h1>Welcome to Fwitter!</h1>
+  <div class="columns is-vcentered">
+    <div class="column is-two-thirds">
+      <header>
+        <div class="logo"><a href="/"><i class="fas fa-dove"></i> <h1>Fwitter</h1></a></div>
+      </header>
+      <%= yield %>
     </div>
-
-    <%= yield %>
-
+  </div>
   </body>
 </html>

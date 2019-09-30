@@ -1,5 +1,21 @@
-<h2>Welcome, <%= @user.username %></h2>
+<div class="columns is-centered is-vcentered">
+	<div class="column is-one-third account-sidebar">
+    <h1 class="has-text-black has-text-centered has-text-weight-bold is-size-4-desktop is-size-6-touch">Hi, <%= @user.username %>!<hr></h1>
 
-<% Tweet.all.each do |tweet| %>
-<%= tweet.content %>
-<% end %>
+    <p><a href="/tweets/new" class="has-text-black"><i class="fas fa-quote-left"></i> Create a New Tweet</a></p><Br>
+    <p><a href="/logout" class="has-text-black"><i class="fas fa-sign-out-alt"></i> Log Out</a></p>
+  
+	</div>
+
+  <div class="column form-style">
+		<h1 class="has-text-weight-semibold is-size-5-desktop is-size-6-touch">View All Tweets</h1>
+    <% Tweet.all.each do |tweet| %>
+      <p class="is-size-6"><%= tweet.content %><br>
+      <a href="/tweets/<%= tweet.id %>/edit" class="is-size-7">Edit</a></p>
+    <% end %>
+	</div>
+</div>
+
+
+
+

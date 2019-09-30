@@ -1,8 +1,10 @@
+<h3 class="title">Create a New Tweet</h3>
 
-<form action='/tweets' method="post">
-<label for="create_tweet">Create your tweet!</label>
-<input type="textarea" name="content"><br>
-<input type="submit" name="submit" id="submit" value="Submit">
+<textarea rows="5" cols="40" autofocus="autofocus" name="content" form="create_tweet" placeholder="Enter your text here...">
+</textarea>
+
+<form action='/tweets' method="post" id="create_tweet">
+  <input type="submit" name="submit" class="submit-btn" value="Submit">
 </form>
 
 
