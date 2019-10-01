@@ -2,10 +2,12 @@ require 'pry'
 class UsersController < ApplicationController
 
     get '/signup' do
-        if Helpers.is_logged_in?(session)
+      # binding.pry
+        if !!session[:user_id]
           redirect to '/tweets'
-        end
+        else
         erb :"/users/create_user"
+        end
       end
   
     post '/signup' do
@@ -15,8 +17,9 @@ class UsersController < ApplicationController
             redirect to '/signup'
           end
         end
-        user = User.create(params)
-        session[:user_id] = user.id
+        # binding.pry
+        @user = User.create(params[:user])
+        session[:user_id] = @user.id
         redirect to '/tweets'
       end
 

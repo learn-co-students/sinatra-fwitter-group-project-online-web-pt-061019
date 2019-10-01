@@ -1,9 +1,9 @@
 class Helpers
-    def self.current_user(session)
+    def self.current_user
       @user = User.find(session[:user_id]) # Returns the object associated with the user id
     end
   
-    def self.is_logged_in?(session)
+    def self.logged_in?
       !!session[:user_id] # Turns into a boolean
     end
   end
