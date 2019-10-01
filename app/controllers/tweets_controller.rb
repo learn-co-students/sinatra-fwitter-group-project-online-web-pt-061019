@@ -1,23 +1,20 @@
 class TweetsController < ApplicationController
  get '/tweets' do
-   if !!session[:user_id]
     @tweets = Tweet.all
     erb :"/tweets/tweets"
- else
-    redirect "/login"
- end
 end
-
- get '/tweets/new' do
-    @tweets = Tweet.all
-    erb :"/tweets/new" 
- end
 
  post '/tweets' do
     @tweet = Tweet.create(params[:tweet])
     @tweet.save
     redirect to "/tweets/#{@tweet.id}"
  end
+
+
+ get '/tweets/new' do
+   @tweets = Tweet.all
+   erb :"/tweets/new" 
+end
 
  get '/tweet/:id' do
     @tweet = Tweet.find(params[:id])
