@@ -17,9 +17,10 @@ class UsersController < ApplicationController
             redirect to '/signup'
           end
         end
-        # binding.pry
-        @user = User.create(params[:user])
+
+        @user = User.create(params)
         session[:user_id] = @user.id
+        # binding.pry
         redirect to '/tweets'
       end
 
