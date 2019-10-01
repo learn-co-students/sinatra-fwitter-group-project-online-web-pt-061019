@@ -1,22 +1,30 @@
-<div class="columns">
-	<div class="column is-vcentered is-half sign-up">
-    <h1 class="img-text has-text-weight-bold is-size-4-desktop is-size-6-touch">Log in & post some new tweets...<br><br>
-    Join in on the conversation!</h1>
-	</div>
+<section class="hero login-hero is-fullheight">
+  <div class="container login-container">
+    <div class="columns is-vcentered ">
+      <div class="column is-half is-centered">
+        <h1 class="title signup-left has-text-white is-size-3-desktop is-size-4-touch">Log in & post some new tweets...<br><br>
+        Join in on the conversation!</h1>
+      </div>
 
-  <div class="column is-center  form-style">
-		<h1 class="has-text-weight-semibold is-size-5-desktop is-size-6-touch">Log in to Fwitter</h1>
-    <br>
-    
-    <form action="/login" method="post">
-      <p><label for="username"><i class="fas fa-user"></i> Username</label><br>
-      <input type="text" name="username">
-      </p>
+      <div class="column form-style">
+        <h1 class="title has-text-weight-semibold is-size-5-desktop is-size-6-touch has-text-centered">Log in to Fwitter</h1><hr>
 
-      <p><label for="password"><i class="fas fa-lock"></i> Password</label><br>
-      <input type="text" name="password"></p>
+        <form action="/login" method="post">
+          <div class="field">
+            <label for="username"><i class="fas fa-user"></i> Username</label><br>
+            <input type="text" name="username">
+          </div>
 
-      <input type="submit" value="Login" id="submit" class="submit-btn">
-    </form>
-	</div>
-</div>
+          <div class="field">
+            <label for="password"><i class="fas fa-lock"></i> Password</label><br>
+            <input type="password" name="password">
+          </div>
+
+          <div class="field">
+            <input type="submit" value="Log in" id="submit" class="submit-btn button is-fullwidth is-inverted">
+          </div>      
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
