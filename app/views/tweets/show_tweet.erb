@@ -1,4 +1,4 @@
-<section class="section">
+<section class="section tweets-section">
   <div class="columns">
     <div class="column is-one-third tweets-left">
       <h1 class="title has-text-black has-text-left has-text-weight-bold is-size-5">Hello, @<%= @user.username %>!</h1>
@@ -13,7 +13,7 @@
     <div class="column tweets-right">
       <h1 class="title has-text-weight-semibold is-size-4-desktop is-size-5-touch has-text-grey-dark">Your New Tweet</h1>
 
-      <p class="subtitle"><%= @tweet.content %></p>
+      <p class="tweet-content"><%= @tweet.content %></p>
 
       <form method="get" action="/tweets/<%= @tweet.id %>/edit">
         <div class="field">
