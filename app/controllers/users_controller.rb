@@ -17,8 +17,10 @@ class UsersController < ApplicationController
             redirect to '/signup'
           end
         end
-        user = User.create(:username => params["username"], :email => params["email"], :password => params["password"])
-        session[:user_id] = user.id
+        
+        @user = User.create(params)
+        # binding.pry
+        session[:user_id] = @user.id
         # binding.pry
         redirect to '/tweets'
       end
@@ -39,6 +41,11 @@ class UsersController < ApplicationController
         else
           redirect to '/login'
         end
+     end
+
+     get '/users/:slug' do
+      @user = User.find_by_slug(params[:slug])
+      erb :'/users/show'
      end
 
      get '/logout' do
