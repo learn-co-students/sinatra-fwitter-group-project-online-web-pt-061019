@@ -16,18 +16,26 @@ end
 
 
  get '/tweets/new' do
-   @tweets = Tweet.all
-   erb :"/tweets/new" 
-end
+    if Helpers.is_logged_in?(session)
+    erb :"/tweets/new"
+    else
+    redirect to '/login'
+    end
+ end
 
  get '/tweet/:id' do
+    if Helpers.is_logged_in?(session)
     @tweet = Tweet.find(params[:id])
-   erb :"/tweets/show"
+    erb :"/tweets/show_tweet"
+    else
+    redirect to '/login'
+    end
  end
 
 get '/tweet/:id/edit' do
+    if Helpers.is_logged_in?(session)
     @tweet = Tweet.find(params[:id])
-    erb :"/tweets/edit"
+    erb :"/tweets/edit_tweet"
 end
 
 patch '/tweets/:id' do
