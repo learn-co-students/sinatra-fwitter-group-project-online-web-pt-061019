@@ -62,7 +62,7 @@ patch '/tweets/:id' do
         @tweet.update(params[:content])
         @tweet.save
         redirect "/tweets/#{@tweet.id}"
-    end
+        end
     else
         redirect to 'login'
     end
