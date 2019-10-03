@@ -17,12 +17,16 @@ class TweetsController < ApplicationController
  end
 
  post '/tweets' do
-    if params[:content].empty?
-        redirect to '/tweets/new'
-    else
+    if Helpers.is_logged_in?(session)
+        if params[:content].empty?
+            redirect to '/tweets/new'
+        end
     @tweet = Tweet.create(params)
-    @tweet.user_id = Helpers.current_user(session)
+    @tweet.user_id = Helpers.current_user(session).id
+    @tweet.save
     redirect to "/tweets"
+    else
+        redirect to '/login'
     end
  end
 
@@ -47,14 +51,19 @@ get '/tweets/:id/edit' do
 end
 
 patch '/tweets/:id' do
-    binding.pry
+    
+    if Helpers.is_logged_in?(session)
     @tweet = Tweet.find_by_id(params[:id])
-    if params[:content].empty?
-        redirect "/tweets/#{@tweet.id}/edit"
+        if Helpers.current_user(session).id == @tweet.user_id
+            if params[:content].empty?
+            redirect "/tweets/#{@tweet.id}/edit"
+            end
+        @tweet.update(params[:content])
+        @tweet.save
+        redirect "/tweets/#{@tweet.id}"
+    end
     else
-    @tweet.update(params[:content])
-    @tweet.save
-    redirect "/tweets/#{@tweet.id}"
+        redirect to 'login'
     end
 end
 
