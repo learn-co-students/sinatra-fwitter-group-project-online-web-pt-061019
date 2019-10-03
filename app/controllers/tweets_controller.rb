@@ -59,7 +59,7 @@ patch '/tweets/:id' do
             if params[:content].empty?
             redirect "/tweets/#{@tweet.id}/edit"
             end
-        @tweet.update(params[:content])
+        @tweet.update(content: params[:content])
         @tweet.save
         redirect "/tweets/#{@tweet.id}"
         end

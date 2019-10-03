@@ -21,7 +21,7 @@ class UsersController < ApplicationController
         @user = User.create(params)
         # binding.pry
         session[:user_id] = @user.id
-        # binding.pry
+        @user.save
         redirect to '/tweets'
       end
 
@@ -45,7 +45,7 @@ class UsersController < ApplicationController
 
      get '/users/:slug' do
       @user = User.find_by_slug(params[:slug])
-      erb :'/users/show'
+      erb :'/users/show_tweet'
      end
 
      get '/logout' do
