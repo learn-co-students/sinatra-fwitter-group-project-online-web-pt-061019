@@ -8,18 +8,23 @@ class TweetsController < ApplicationController
   end
  end
 
- post '/tweets' do
-    @tweet = Tweet.create(params[:tweet])
-    @user = Helpers.current_user(session)
-    @tweet.save
-    redirect to "/tweets/#{@tweet.id}"
- end
 
  get '/tweets/new' do
     if Helpers.is_logged_in?(session)
     erb :"/tweets/new"
     else
     redirect to '/login'
+    end
+ end
+
+ post '/tweets' do
+    @user = Helpers.current_user(session)
+    if params[:content].empty?
+        redirect '/tweets/new'
+    else
+    @tweet = Tweet.create(params[:content])
+    # binding.pry
+    redirect to "/tweets"
     end
  end
 
@@ -36,6 +41,8 @@ get '/tweet/:id/edit' do
     if Helpers.is_logged_in?(session)
     @tweet = Tweet.find(params[:id])
     erb :"/tweets/edit_tweet"
+    else
+        redirect to '/login'
     end
 end
 
