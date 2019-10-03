@@ -19,7 +19,6 @@ class TweetsController < ApplicationController
 
  post '/tweets' do
     if Helpers.is_logged_in?(session)
-        binding.pry
         if params[:content].empty?
             redirect to '/tweets/new'
         end
