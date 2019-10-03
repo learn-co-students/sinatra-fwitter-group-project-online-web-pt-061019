@@ -50,13 +50,8 @@ post '/login' do
 end
 
 get '/logout' do
-  if logged_in?    
-    session.destroy
-    redirect to '/login'
-  else
-    redirect '/'
-  end
-  
+  session.destroy
+  redirect to '/login'  
 end
 
 helpers do
