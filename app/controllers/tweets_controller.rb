@@ -4,12 +4,11 @@ class TweetsController < ApplicationController
     # binding.pry
     if !Helpers.is_logged_in?(session)
       redirect to '/login'
-    else
+    end
       @tweets = Tweet.all
       @user = Helpers.current_user(session)
     
     erb :"/tweets/tweets"
-    end
   end
 
   get '/tweets/new' do
@@ -23,6 +22,7 @@ class TweetsController < ApplicationController
   post '/tweets' do
     user = Helpers.current_user(session)
     if params["content"].empty?
+      # Set a flash entry
       flash[:empty_tweet] = "Please enter content for your tweet"
       redirect to '/tweets/new'
     end
@@ -64,7 +64,7 @@ class TweetsController < ApplicationController
   redirect to "/tweets/#{tweet.id}"
  end
 
- post '/tweets/:id/delete' do
+ delete '/tweets/:id/delete' do
   if !Helpers.is_logged_in?(session)
     redirect to '/login'
   end

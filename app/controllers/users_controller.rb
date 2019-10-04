@@ -11,9 +11,9 @@ class UsersController < ApplicationController
 
   post '/signup' do
     # binding.pry
-    params.each do |label, input|
-      if input.empty?
-        flash[:new_user_error] = "Please enter a value for #{label}"
+    params.each do |key, value|
+      if value.empty?
+        flash[:new_user_error] = "Please enter a value for #{key}"
         redirect to '/signup'
       end
     end  
@@ -54,6 +54,7 @@ class UsersController < ApplicationController
   end
 
   get '/users/:slug' do
+    # binding.pry
     slug = params[:slug]
     @user = User.find_by_slug(slug)
     erb :"users/show"
