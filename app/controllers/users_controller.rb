@@ -34,14 +34,14 @@ class UsersController < ApplicationController
     end
 
     post '/login' do
-        @user = User.find_by(username: params[:username])
-        if @user && @user.authenticate(params[:password])
-          session[:user_id] = @user.id
-          redirect to '/tweets'
+      user = User.find_by(:username => params[:username])
+        if user && user.authenticate(params[:password])
+          session["user_id"] = user.id
+          redirect to "/tweets"
         else
-          redirect to '/login'
+          redirect to "/login"
         end
-     end
+      end
 
      get '/users/:slug' do
       @user = User.find_by_slug(params[:slug])
