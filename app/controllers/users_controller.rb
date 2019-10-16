@@ -18,7 +18,7 @@ class UsersController < ApplicationController
         end
     end
     
-    get '/login' do 
+    get '/users/login' do 
         if logged_in? 
           redirect :'/tweets'
         else
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
         end
     end
     
-    post '/login' do
+    post '/users/login' do
         user = User.find_by(username: params[:username])
     
         if user && user.authenticate(params[:password])
@@ -37,7 +37,7 @@ class UsersController < ApplicationController
         end
     end
     
-    get '/logout' do 
+    get '/users/logout' do 
         if logged_in?
           session.destroy
           redirect '/users/login'
