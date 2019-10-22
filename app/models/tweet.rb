@@ -1,3 +1,7 @@
-class Tweet < ActiveRecord::Base
+class Tweet < ActiveRecord::Base 
+
   belongs_to :user
-end
+  validates_presence_of :content 
+  
+
+end 
